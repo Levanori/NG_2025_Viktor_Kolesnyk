@@ -1,0 +1,1 @@
+# NG_2025_Viktor_Kolesnyk
