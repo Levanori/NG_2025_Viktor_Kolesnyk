@@ -1,47 +1,59 @@
 #include <iostream>
 #include <cmath>
+#include <string>
 
 using namespace std;
 
 int main()
 {
-    float num_1, num_2 = 0; char action = 0;
+    float num_1, num_2, result = 0; char action = 0;
+    bool problem = false; string operation_name = " ";
     cout << "Enter the first number: " << endl;
     cin >> num_1;
     cout << "Enter the action you want to do: +, -, *, /, ^, sqrt(enter s)" << endl;
     cin >> action;
     if (action == 's') {
-        cout << "The result of square root is: " << sqrt(num_1) << endl;
-        return 0;
+        operation_name = "square root";
+        result = sqrt(num_1);
     }
     else {
         cout << "Enter the second number: " << endl;
         cin >> num_2;
         switch (action) {
         case '+':
-            cout << "The result of addition is: " << num_1+num_2 << endl;
+            operation_name = "addition";
+            result = num_1+num_2;
             break;
         case '-':
-            cout << "The result of the subtraction is: " << num_1-num_2 << endl;
+            operation_name = "the subtraction";
+            result = num_1-num_2;
             break;
         case '*':
-            cout << "The result of the multiplication is: " << num_1*num_2 << endl;
+            operation_name = "the multiplication";
+            result = num_1*num_2;
             break;
         case '/':
             if (num_2 == 0) {
                 cout << "You can't divide by 0!" << endl;
+                problem = true;
             }
             else {
-                cout << "The result of division is: " << num_1/num_2 << endl;
+                operation_name = "division";
+                result = num_1/num_2;
             }
             break;
         case '^':
-            cout << "The result of raising a number to a power is: " << pow(num_1, num_2) << endl;
+            operation_name = "raising a number to a power";
+            result = pow(num_1, num_2);
             break;
         default:
             cout << "Something wrong!" << endl;
+            problem = true;
             break;
         }
+    }
+    if (!problem) {
+        cout << "The result of " << operation_name << " is: " << result << endl;
     }
     return 0;
 }

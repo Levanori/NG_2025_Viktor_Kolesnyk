@@ -4,22 +4,6 @@ using namespace std;
 
 int main()
 {
-    int pattern_size = 0;
-    cout << "Enter the number of rows to create a pattern: ";
-    cin >> pattern_size;
-
-    for (int row_pattern = 0; row_pattern < pattern_size; ++row_pattern) {
-        for (int column_pattern = 0; column_pattern < pattern_size; ++column_pattern) {
-            if (
-                row_pattern == 0 || row_pattern == pattern_size - 1 ||
-                column_pattern == 0 || column_pattern == pattern_size - 1) {
-                cout << "*";
-            } else {
-                cout << " ";
-            }
-        }
-        cout << "\n";
-    }
 
     int size, spaces, stars = 0;
     cout << "Enter the number of triangle rows to create a rhombus: ";
