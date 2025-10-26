@@ -5,20 +5,19 @@ using namespace std;
 int main()
 {
     int num;
-    cout << "Enter the number of rows to create a pattern: ";
+    cout << "Enter the number of colums to create a pattern: ";
     cin >> num;
-
-    for (int row = 0; row < num; ++row) {
+    for (int row = 1; row < num; ++row) {
         for (int col = 0; col < num; ++col) {
 
             int top = row;
             int left = col;
-            int down = num-1-row;
-            int right = num-1-col;
+            int down = num-row;
+            int right = num-col;
             int start = top;
             bool draw_stars = false;
 
-            if (left+2 < start) {
+            if (left+1 < start) {
                 start = left;
             }
             if (down < start) {
@@ -28,14 +27,14 @@ int main()
                 start = right;
             }
 
-            if (start % 2 == 0) {
-                if (row == start && col >= start-1 && col < num-start-1)
+            if (start % 2 == 1) {
+                if (row == start && col > start-2 && col < num-start+1)
                     draw_stars = true; // top side
-                else if (col == num - start-1 && row > start && row < num - start-1)
+                else if (col == num-start && row > start && row < num-start)
                     draw_stars = true; // right side
-                else if (row == num - start-1 && col > start && col < num - start-1)
+                else if (row == num-start && col > start && col < num-start+1)
                     draw_stars = true; // down side
-                else if (col == start && row > start && row < num - start-1)
+                else if (col == start && row > start && row < num-start+1)
                     draw_stars = true; // left side
             }
             if(draw_stars) {
