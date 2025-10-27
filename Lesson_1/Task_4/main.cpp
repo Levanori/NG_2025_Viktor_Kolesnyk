@@ -4,22 +4,25 @@ using namespace std;
 
 int main()
 {
-    int size = 0;
+    int size, change_object = 0;
     cout << "Enter the size of the square and triangle: ";
     cin >> size;
-    for (int row_square = 0; row_square < size; ++row_square){
-        for (int column_square = 0; column_square < size; ++column_square){
-            cout << "*";
-        }
-        cout << endl;
-    }
+    for (int row = 0; row < size*2; ++row){
 
-    for (int row_triangle = 0; row_triangle < size; ++row_triangle){
-        cout << endl;
-        for (int column_triangle = 0; column_triangle < row_triangle+1; ++column_triangle){
+        if (row < size) {
+            change_object = size;
+        }
+        else {
+            change_object = row-size+1;
+        }
+
+        if (row == size) {
+            cout << endl;
+        }
+        for (int column = 0; column < change_object; ++column){
             cout << "*";
         }
+        cout << endl;
     }
-    cout << endl;
     return 0;
 }
