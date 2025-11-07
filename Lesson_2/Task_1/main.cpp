@@ -28,14 +28,20 @@ int main()
             cin >> money_operation;
             cout << "Chose your operation(+,-)" << endl;
             cin >> operation;
-            if (operation == '+') {
+
+            switch(operation)
+            {
+            case '+':
                 account[num_acc-1] += money_operation;
-            }
-            else if (operation == '-' && account[num_acc-1] >= money_operation){
-                account[num_acc-1] -= money_operation;
-            }
-            else {
-                cout << "You don't have enough money!" << endl;
+                break;
+            case '-':
+                if (account[num_acc-1] >= money_operation) {
+                    account[num_acc-1] -= money_operation;
+                }
+                else {
+                    cout << "You don't have enough money!" << endl;
+                }
+                break;
             }
             break;
         case 2:
