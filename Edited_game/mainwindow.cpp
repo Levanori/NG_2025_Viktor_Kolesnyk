@@ -26,13 +26,39 @@ MainWindow::~MainWindow()
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
+    level = getMap();
+
+    int newPosX = playerPosX;
+    int newPosY = playerPosY;
+
     switch(event->key()) {
-    case Qt::Key_W: playerPosY-=1; break;
-    case Qt::Key_S: playerPosY+=1; break;
-    case Qt::Key_A: playerPosX-=1; break;
-    case Qt::Key_D: playerPosX+=1; break;
+    case Qt::Key_W: newPosY-=1; break;
+    case Qt::Key_S: newPosY+=1; break;
+    case Qt::Key_A: newPosX-=1; break;
+    case Qt::Key_D: newPosX+=1; break;
     }
 
+    int currentRow = 0;
+    int currentCol = 0;
+    bool canMove = false;
+
+    for (int index = 0; index < level.size(); index++) {
+        if (level[index] == '\n') {
+            currentRow++;
+            currentCol = 0;
+        } else {
+            if (currentRow == newPosY && currentCol == newPosX) {
+                canMove = (level[index] != '#' && level[index] != '*');
+                break;
+            }
+            currentCol++;
+        }
+    }
+
+    if (canMove) {
+    playerPosX = newPosX;
+    playerPosY = newPosY;
+    }
     initMap();
 }
 
@@ -54,7 +80,7 @@ void MainWindow::addSquare()
 
 void MainWindow::initMap()
 {
-    QByteArray level = getMap();
+    level = getMap();
 
     int row = 0;
     int column = 0;

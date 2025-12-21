@@ -47,5 +47,6 @@ private:
     int playerPosX = 6;
     int playerPosY = 5;
 
+    QByteArray level;
 };
 #endif // MAINWINDOW_H
